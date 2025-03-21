@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(
     session({
-        secret: "replace_this_with_a_secure_key",
+        secret: "IloveWritingCode_MySecret_KEY_IS_heRE_THiS_text",
         resave: false,
         saveUninitialized: true,
     })
@@ -43,6 +43,14 @@ app.use((req, res, next) => {
     next();
 });
 
+// Add this middleware to log user activity
+app.use((req, res, next) => {
+    if (req.session.user) {
+        console.log(`User ${req.session.user.username} (Role: ${req.session.user.role}) accessed ${req.path} at ${new Date().toLocaleTimeString()}`);
+    }
+    next();
+});
+
 // GET / - Render home page
 app.get("/", (req, res) => {
     res.render("index");
@@ -56,14 +64,14 @@ app.get("/login", (req, res) => {
 // POST /login - Authenticate user
 app.post("/login", async (req, res) => {
     const { email, password } = req.body;
-    const user = USERS.find(u => u.email === email);
+    const user = USERS.find(u => u.email === email || u.username === email); // Allow login with email OR username
 
     if (user && await bcrypt.compare(password, user.password)) {
         req.session.user = user;
         req.session.message = { type: "success", text: "Login successful! Welcome back." };
         return res.redirect("/landing");
     }
-    res.render("login", { error: "Invalid email or password. Please try again!" });
+    res.render("login", { error: "Invalid email/username or password. Please try again!" });
 });
 
 // GET /signup - Render signup form

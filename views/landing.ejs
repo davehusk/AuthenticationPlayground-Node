@@ -3,6 +3,9 @@
         <div class="notification <%= message.type %>"><%= message.text %></div>
     <% } %>
     <h1>Welcome, <%= user.username %>!</h1>
+    <div class="cli-log">
+        <p>User <%= user.username %> (Role: <%= user.role %>) logged in at <%= new Date().toLocaleTimeString() %>.</p>
+    </div>
     <% if (user.role === "admin") { %>
         <h2>User List</h2>
         <table>

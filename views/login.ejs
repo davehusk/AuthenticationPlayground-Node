@@ -2,20 +2,22 @@
     <% if (message) { %>
         <div class="notification <%= message.type %>"><%= message.text %></div>
     <% } %>
-    <h1>Login</h1>
-    <% if (error) { %>
-        <p style="color: red;"><%= error %></p>
-    <% } %>
-    <form action="/login" method="POST">
-        <div class="form-input-container">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" required>
-        </div>
-        <div class="form-input-container">
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
-        </div>
-        <button type="submit">Login</button>
-    </form>
-    <p><a href="/">Go back</a></p>
+    <div class="form-container">
+        <h1>Login</h1>
+        <% if (error) { %>
+            <p style="color: #f44336;"><%= error %></p>
+        <% } %>
+        <form action="/login" method="POST">
+            <div class="form-input-container">
+                <label for="email">Email or Username:</label>
+                <input type="text" name="email" id="email" required>
+            </div>
+            <div class="form-input-container">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <p><a href="/">Go back</a></p>
+    </div>
 <%- include('partials/footer') %>
