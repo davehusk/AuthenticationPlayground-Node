@@ -1,4 +1,7 @@
 <%- include('partials/header', { title: "Welcome" }) %>
+    <% if (message) { %>
+        <div class="notification <%= message.type %>"><%= message.text %></div>
+    <% } %>
     <h1>Welcome, <%= user.username %>!</h1>
     <% if (user.role === "admin") { %>
         <h2>User List</h2>
