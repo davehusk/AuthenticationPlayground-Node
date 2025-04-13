@@ -1,68 +1,109 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/O5JWjEqM)
-# User Management System  
+# 🔐 Express Auth Dashboard
 
-This is the starting point for the **User Management System** assignment. The goal of this project is to create a web application where users can register, log in, and access role-based functionality based on their account type (user or admin).
+A clean, dark-themed user authentication system built with **Express.js**, featuring **login**, **signup**, **role-based access control**, and a **simple admin dashboard** with session support.
 
-For full project details, requirements, and grading criteria, refer to the [assignment sheet](https://menglishca.github.io/keyin-course-notes/fullstack/qaps/qap-3/).
+## ✨ Features
 
-## Setup Instructions  
+- Secure password hashing with **bcrypt**
+- Express **session-based authentication**
+- Role-based dashboard (Admin/User)
+- Persistent UI feedback (success/error messages)
+- Stylish dark-themed frontend (CSS only)
+- Login via **email** or **username**
+- Real-time **CLI-style activity logs** for users
 
-1. **Accept the GitHub Assignment** (link provided in the project sheet).
+---
 
-1. **Name your new repository** and choose its visibility (public or private).  
+## 🚀 Demo
 
-1. Once your repository is created, **clone your new repo** to your local machine:  
-    ```bash  
-    git clone <your-new-repo-url>  
-    ```  
+### 📸 Screenshots
 
-1. Navigate into the project directory and install the necessary dependencies:  
-    ```bash  
-    cd <your-new-repo-name>  
-    npm install  
-    ```  
+### Admin Dashboard
 
-1. **Run the app:**  
-    ```bash  
-    npm start  
-    ```  
-    This will start the server at `http://localhost:3000/`.  
+> View all registered users in a table with a sleek, dark interface.
 
-1. You can now begin working on your project, adding your own code and committing your changes as you go:  
-    ```bash  
-    git add .  
-    git commit -m "First commit"  
-    git push origin main  
-    ```  
+![Dashboard - demo](./demo.png)
 
+---
 
-## Development Guidelines  
+### 🎥 Video Walkthrough
 
-1. **Authentication**:  
-   - Use `express-session` for session management.  
-   - Hash all passwords with bcrypt before storing them.  
-   - Authenticate users during login by comparing hashed passwords.  
+> Quick visual guide of the full login → dashboard → logout flow.
 
-2. **Role-Based Access Control**:  
-   - Restrict the admin view of all registered users to accounts with the admin role.  
-   - Regular users should only access their dashboard.  
+[![Watch the demo](./demovid.png)](./demo.mp4)
 
-3. **Error Handling**:  
-   - Display errors during login or signup if applicable.  
+> Click image above or [watch video](./demo.mp4)
 
-4. **Security**:  
-   - Ensure no plaintext passwords are stored or transmitted.  
+---
 
-5. **Data Storage**:  
-   - Use an in-memory array to store user accounts. Persistent data storage is not required.
+## 🧠 How It Works
 
-## Submission Guidelines  
+### Login Flow
 
-- Submit a link to your GitHub repository through the Teams assignment.  
-- Ensure the application runs correctly with `npm start`.  
-- Include all required functionality as specified in the [assignment sheet](https://menglishca.github.io/keyin-course-notes/fullstack/qaps/qap-3/).
+1. User logs in with **email or username**
+2. Credentials are validated using **bcrypt**
+3. Upon success:
+   - Session is stored
+   - User is redirected to `/landing`
+4. Admins see a user list; regular users see a friendly message
 
-## Notes  
-- Extra npm packages are allowed (except for templating engines like React), but should not be required.
-- All pages should use **EJS templates** for rendering.
-- Focus on building secure and functional features with proper user experience.
+---
+
+## 🛠️ Tech Stack
+
+- **Express.js**
+- **EJS** (Embedded JavaScript Templates)
+- **bcrypt**
+- **express-session**
+- **HTML/CSS**
+
+---
+
+## 📁 File Structure (Highlights)
+
+```text
+.
+├── index.js                 # Main server logic
+├── views/                  # EJS templates
+│   ├── login.ejs
+│   ├── signup.ejs
+│   ├── landing.ejs
+│   └── partials/
+├── public/
+│   └── styles.css          # Custom dark theme
+├── demo1.png
+├── demo2.png
+├── demo.mp4
+└── README.md
+```
+
+---
+
+## 🔧 Setup & Run
+
+```bash
+git clone https://github.com/davehusk/express-auth-dashboard.git
+cd express-auth-dashboard
+npm install
+node index.js
+```
+
+Then visit: [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 🛡️ Security Notes
+
+- Passwords are hashed using **bcrypt**
+- Sessions are securely handled via **express-session**
+- Admins only access user list (RBAC enforced in `/landing` route)
+
+---
+
+## ❤️ Author
+
+Crafted with care and intention.  
+Let every route be a decision, every view a reflection.  
+🔗 Stay curious. By David Husk
+
+---
